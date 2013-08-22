@@ -245,7 +245,7 @@ class Random {
         if (ord(self::$state) % 2 === 0) {
             return hash_hmac('sha256', $buffer1, $buffer2, true);
         } else {
-            return hash_hmac('sha256', $buffer1, $buffer2, true);
+            return hash_hmac('sha256', $buffer2, $buffer1, true);
         }
     }
 
