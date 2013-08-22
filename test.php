@@ -30,3 +30,10 @@ var_dump($random->shuffle("abcdefghijklmnopqrstuvwxyz"));
 echo "\nShuffling an array\n\n";
 
 var_dump($random->shuffle(array(1, 2, 3, 4, 5, 6, 7, 8, 9)));
+
+echo "\nGenerating a token\n\n";
+var_dump($random->token(32));
+
+echo "\nGenerating a token (a,b,c,d)\n\n";
+var_dump($random->token(8, array('a', 'b', 'c', 'd')));
+

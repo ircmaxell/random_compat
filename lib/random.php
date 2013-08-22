@@ -6,6 +6,11 @@ class Random {
 
     const BLOCK_SIZE = 32;
 
+    const TOKEN_LOWER_ALPHA = "abcdefghijklmnopqrstuvwxyz";
+    const TOKEN_UPPER_ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const TOKEN_ALPHA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const TOKEN_ALNUM = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
     private static $state = '';
 
     protected $secure = false;
@@ -139,6 +144,30 @@ class Random {
         return $result;
     }
 
+    /**
+     * Generate a token with the specified alphabet
+     *
+     * @param int          $length   The length of the token to generate
+     * @param string|array $alphabet The "alphabet" (characters) to use
+     *
+     * @return string The generated random token
+     */
+    public function token($length, $alphabet = self::TOKEN_ALNUM) {
+        if (is_string($alphabet)) {
+            $alphabet = str_split($alphabet, 1);
+        } elseif (is_array($alphabet)) {
+            $alphabet = array_values($alphabet);
+        } else {
+            throw new \InvalidArgumentException("Expecting either a String or Array alphabet");
+        }
+        $alphabet = array_unique($alphabet);
+        $count = count($alphabet);
+        $result = '';
+        for ($i = 0; $i < $length; $i++) {
+            $result .= $alphabet[$this->int(0, $count - 1)];
+        }
+        return $result;
+    }
     
     /**
      * Protected function to overload the generator for unit testing purposes
