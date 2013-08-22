@@ -1,0 +1,18 @@
+{
+	"name": "ircmaxell/random-compat",
+	"description": "A compatibility library for the proposed simplified random number generator",
+	"version": "0.1",
+	"keywords": ["random"],
+	"homepage": "https://github.com/ircmaxell/random_compat",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Anthony Ferrara",
+			"email": "ircmaxell@php.net",
+			"homepage": "http://blog.ircmaxell.com"
+		}
+	],
+	"autoload": {
+		"files": ["lib/random.php"]
+	}
+}
